@@ -19,8 +19,7 @@
 - [X] Phind (Implemented in a separate branch, but not merged due to being too pricey or not returning valid moves)
 - [X] ThinkAnyAI (Implemented in a separate branch, but not merged due to being too pricey or not returning valid moves)
 - [X] Yep (Implemented in a separate branch, but not merged due to being too pricey or not returning valid moves)
-- [ ] VLM
-- [ ] Deepinfra
+
 
 ## Testing
 - [X] Test for Gemini responses (`test/gemini_response_test.py`)
