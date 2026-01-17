@@ -3,10 +3,12 @@ from ai4free import YouChat
 class YouChatAgent:
     """Agent which uses YouChat API to generate chess moves."""
     
+    
     def __init__(self):
         self.youchat = YouChat()
+        self.name = "YouChat Agent"
 
-    def get_move(self, fen: str) -> str:
+    def get_move(self, fen: str, color: str) -> str:
         try:
             prompt = f"""You are a chess engine.
 
@@ -20,6 +22,8 @@ class YouChatAgent:
                     - Output MUST contain ONLY 4 characters (or 5 if promotion, e.g. "e7e8q").
 
                     If you output anything except a single valid UCI move, the response is considered INVALID.
+
+                    You are playing as {color}.
 
                     Now output the move:
                     """
