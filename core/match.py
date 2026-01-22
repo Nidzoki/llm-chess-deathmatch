@@ -4,6 +4,7 @@ import random
 import datetime
 import json
 import re
+import os
 
 class Match:
     def __init__(self, player_white, player_black):
@@ -23,9 +24,11 @@ class Match:
         white_name = re.sub(r'[^\w\-.]', '_', player_white.name)
         black_name = re.sub(r'[^\w\-.]', '_', player_black.name)
         timestamp = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
-        self.illegal_move_log_file = f"{white_name}_vs_{black_name}_{timestamp}_illegal_moves.log"
+        self.illegal_move_log_file = f"gamedata/logs/{white_name}_vs_{black_name}_{timestamp}_illegal_moves.log"
+        self.pgn_filename = f"gamedata/pgns/{white_name}_vs_{black_name}_{timestamp}.pgn"
 
     def _log_illegal_move(self, player_name, opponent_name, board_fen, attempted_move, move_number):
+        os.makedirs(os.path.dirname(self.illegal_move_log_file), exist_ok=True)
         log_entry = {
             "timestamp": datetime.datetime.now().isoformat(),
             "player": player_name,
@@ -82,7 +85,8 @@ class Match:
 
             current_player = self.player_black if current_player == self.player_white else self.player_white
         self.result = self.board.result()
-        with open("match_result.pgn", "w") as pgn_file:
+        os.makedirs(os.path.dirname(self.pgn_filename), exist_ok=True)
+        with open(self.pgn_filename, "w") as pgn_file:
             print(self.game, file=pgn_file, end="\n\n")
 
     def play_with_user(self):
@@ -132,6 +136,8 @@ class Match:
         
         self.result = self.board.result()
         print(f"Game over. Result: {self.result}")
+        user_pgn_filename = self.pgn_filename.replace(".pgn", "_with_user.pgn")
+        os.makedirs(os.path.dirname(user_pgn_filename), exist_ok=True)
         # Save to a different file to not overwrite test_play results
-        with open("match_with_user.pgn", "w") as pgn_file:
+        with open(user_pgn_filename, "w") as pgn_file:
             print(self.game, file=pgn_file, end="\n\n")
