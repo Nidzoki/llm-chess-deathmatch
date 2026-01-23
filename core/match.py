@@ -51,6 +51,7 @@ class Match:
         while not self.board.is_game_over(claim_draw=True):
             board_fen = self.board.fen()
             move_uci = current_player.get_move(board_fen, "white" if current_player == self.player_white else "black")
+            print(f"LLM response: {move_uci}")
             move = parse_and_validate_move(self.board, move_uci)
 
             if move is None:
@@ -90,6 +91,7 @@ class Match:
             else: # AI player
                 board_fen = self.board.fen()
                 move_uci = current_player.get_move(board_fen, player_color_str)
+                print(f"LLM response: {move_uci}")
                 move = parse_and_validate_move(self.board, move_uci)
                 
                 if move is None:
