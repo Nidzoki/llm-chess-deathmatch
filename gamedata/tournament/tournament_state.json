@@ -1,0 +1,298 @@
+{
+    "agents": [
+        "gemini",
+        "cohere",
+        "groq",
+        "reka",
+        "youchat"
+    ],
+    "schedule": [
+        {
+            "id": 0,
+            "white": "gemini",
+            "black": "cohere",
+            "played": true,
+            "result": "0-1"
+        },
+        {
+            "id": 1,
+            "white": "gemini",
+            "black": "groq",
+            "played": true,
+            "result": "0-1"
+        },
+        {
+            "id": 2,
+            "white": "gemini",
+            "black": "reka",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 3,
+            "white": "gemini",
+            "black": "youchat",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 4,
+            "white": "cohere",
+            "black": "gemini",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 5,
+            "white": "cohere",
+            "black": "groq",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 6,
+            "white": "cohere",
+            "black": "reka",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 7,
+            "white": "cohere",
+            "black": "youchat",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 8,
+            "white": "groq",
+            "black": "gemini",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 9,
+            "white": "groq",
+            "black": "cohere",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 10,
+            "white": "groq",
+            "black": "reka",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 11,
+            "white": "groq",
+            "black": "youchat",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 12,
+            "white": "reka",
+            "black": "gemini",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 13,
+            "white": "reka",
+            "black": "cohere",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 14,
+            "white": "reka",
+            "black": "groq",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 15,
+            "white": "reka",
+            "black": "youchat",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 16,
+            "white": "youchat",
+            "black": "gemini",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 17,
+            "white": "youchat",
+            "black": "cohere",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 18,
+            "white": "youchat",
+            "black": "groq",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 19,
+            "white": "youchat",
+            "black": "reka",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 20,
+            "white": "gemini",
+            "black": "cohere",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 21,
+            "white": "gemini",
+            "black": "groq",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 22,
+            "white": "gemini",
+            "black": "reka",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 23,
+            "white": "gemini",
+            "black": "youchat",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 24,
+            "white": "cohere",
+            "black": "gemini",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 25,
+            "white": "cohere",
+            "black": "groq",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 26,
+            "white": "cohere",
+            "black": "reka",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 27,
+            "white": "cohere",
+            "black": "youchat",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 28,
+            "white": "groq",
+            "black": "gemini",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 29,
+            "white": "groq",
+            "black": "cohere",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 30,
+            "white": "groq",
+            "black": "reka",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 31,
+            "white": "groq",
+            "black": "youchat",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 32,
+            "white": "reka",
+            "black": "gemini",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 33,
+            "white": "reka",
+            "black": "cohere",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 34,
+            "white": "reka",
+            "black": "groq",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 35,
+            "white": "reka",
+            "black": "youchat",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 36,
+            "white": "youchat",
+            "black": "gemini",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 37,
+            "white": "youchat",
+            "black": "cohere",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 38,
+            "white": "youchat",
+            "black": "groq",
+            "played": false,
+            "result": null
+        },
+        {
+            "id": 39,
+            "white": "youchat",
+            "black": "reka",
+            "played": false,
+            "result": null
+        }
+    ],
+    "scores": {
+        "gemini": 0,
+        "cohere": 1,
+        "groq": 1,
+        "reka": 0,
+        "youchat": 0
+    }
+}

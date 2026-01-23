@@ -5,6 +5,7 @@ import datetime
 import json
 import re
 import os
+import time
 
 class Match:
     def __init__(self, player_white, player_black):
@@ -84,10 +85,12 @@ class Match:
             print(f"{current_player.name} plays: {move.uci()}\n{self.board_str()}\n")
 
             current_player = self.player_black if current_player == self.player_white else self.player_white
+            time.sleep(12)
         self.result = self.board.result()
         os.makedirs(os.path.dirname(self.pgn_filename), exist_ok=True)
         with open(self.pgn_filename, "w") as pgn_file:
             print(self.game, file=pgn_file, end="\n\n")
+        return self.result
 
     def play_with_user(self):
         current_player = self.player_white
