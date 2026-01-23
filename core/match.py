@@ -65,7 +65,7 @@ class Match:
             print(f"{current_player.name} plays: {move.uci()}\n{self.board_str()}\n")
 
             current_player = self.player_black if current_player == self.player_white else self.player_white
-            time.sleep(12)
+            time.sleep(10)
         self.result = self.board.result()
         save_pgn(self.pgn_filename, self.game)
         return self.result
