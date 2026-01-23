@@ -1,29 +1,16 @@
 from reka.client import Reka
+from utils.prompts import get_move_prompt
 
 class RekaAgent:
 
     """Agent which uses REKA API to generate chess moves."""
-    def __init__(self, api_key):
+    def __init__(self, api_key=None):
         self.API_key = api_key
         self.reka = Reka(api_key=api_key)
 
-    def get_move(self, fen: str) -> str:
+    def get_move(self, fen: str, color: str) -> str:
         try:
-            prompt = f"""You are a chess engine.
-
-                    Given the position in FEN format:
-                    {fen}
-
-                    Your task:
-                    - Output ONLY ONE legal chess move.
-                    - Format MUST be exactly UCI (e.g. "e2e4", "g8f6").
-                    - NO words, NO sentences, NO punctuation, NO commentary.
-                    - Output MUST contain ONLY 4 characters (or 5 if promotion, e.g. "e7e8q").
-
-                    If you output anything except a single valid UCI move, the response is considered INVALID.
-
-                    Now output the move:
-"""
+            prompt = get_move_prompt(fen, color)
             response = self.reka.chat.create(messages=[{"content":f"{prompt}", "role":"user"}], model="reka-core-20240501")
             return response.responses[0].message.content
         except Exception as e:
@@ -31,4 +18,3 @@ class RekaAgent:
         
     def check_is_alive(self):
         return "I'm alive!"
-
