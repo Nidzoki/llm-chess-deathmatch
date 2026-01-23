@@ -2,10 +2,11 @@ import chess
 import chess.pgn
 import random
 import datetime
-import json
 import re
-import os
 import time
+from utils.logging import log_illegal_move
+from utils.move_parsing import parse_and_validate_move
+from utils.pgn_tools import save_pgn
 
 class Match:
     def __init__(self, player_white, player_black):
@@ -28,19 +29,6 @@ class Match:
         self.illegal_move_log_file = f"gamedata/logs/{white_name}_vs_{black_name}_{timestamp}_illegal_moves.log"
         self.pgn_filename = f"gamedata/pgns/{white_name}_vs_{black_name}_{timestamp}.pgn"
 
-    def _log_illegal_move(self, player_name, opponent_name, board_fen, attempted_move, move_number):
-        os.makedirs(os.path.dirname(self.illegal_move_log_file), exist_ok=True)
-        log_entry = {
-            "timestamp": datetime.datetime.now().isoformat(),
-            "player": player_name,
-            "opponent": opponent_name,
-            "move_number": move_number,
-            "board_fen": board_fen,
-            "attempted_move_uci": str(attempted_move) if attempted_move is not None else None
-        }
-        with open(self.illegal_move_log_file, "a") as f:
-            f.write(json.dumps(log_entry) + "\n")
-
     def board_str(self):
         return str(self.board)
 
@@ -62,21 +50,13 @@ class Match:
         node = self.game
         while not self.board.is_game_over(claim_draw=True):
             board_fen = self.board.fen()
-            move = None
-            move_uci = None
-            
-            try:
-                move_uci = current_player.get_move(board_fen, "white" if current_player == self.player_white else "black")
-                candidate_move = chess.Move.from_uci(move_uci)
-                if candidate_move in self.board.legal_moves:
-                    move = candidate_move
-            except (ValueError, TypeError):
-                pass
+            move_uci = current_player.get_move(board_fen, "white" if current_player == self.player_white else "black")
+            move = parse_and_validate_move(self.board, move_uci)
 
             if move is None:
                 move_number = self.board.ply() // 2 + 1
                 opponent_name = self.player_black.name if current_player == self.player_white else self.player_white.name
-                self._log_illegal_move(current_player.name, opponent_name, board_fen, move_uci, move_number)
+                log_illegal_move(self.illegal_move_log_file, current_player.name, opponent_name, board_fen, move_uci, move_number)
                 print("AI returned invalid/illegal move. Making a random legal move instead.")
                 move = random.choice(list(self.board.legal_moves))
 
@@ -87,9 +67,7 @@ class Match:
             current_player = self.player_black if current_player == self.player_white else self.player_white
             time.sleep(12)
         self.result = self.board.result()
-        os.makedirs(os.path.dirname(self.pgn_filename), exist_ok=True)
-        with open(self.pgn_filename, "w") as pgn_file:
-            print(self.game, file=pgn_file, end="\n\n")
+        save_pgn(self.pgn_filename, self.game)
         return self.result
 
     def play_with_user(self):
@@ -100,34 +78,24 @@ class Match:
             player_color_str = "white" if current_player == self.player_white else "black"
             move = None
 
-            # Simple check if the current player is human, by checking if 'get_move' is missing
             if not hasattr(current_player, 'get_move'):
                 valid_input = False
                 while not valid_input:
-                    try:
-                        move_uci = input(f"Enter your move for {player_color_str} (in UCI format, e.g. e2e4): ")
-                        move = chess.Move.from_uci(move_uci)
-                        if move in self.board.legal_moves:
-                            valid_input = True
-                        else:
-                            print("Illegal move. Try again.")
-                    except ValueError:
-                        print("Invalid UCI format. Try again.")
+                    move_uci = input(f"Enter your move for {player_color_str} (in UCI format, e.g. e2e4): ")
+                    move = parse_and_validate_move(self.board, move_uci)
+                    if move:
+                        valid_input = True
+                    else:
+                        print("Invalid or illegal move. Try again.")
             else: # AI player
                 board_fen = self.board.fen()
-                move_uci = None
-                try:
-                    move_uci = current_player.get_move(board_fen, player_color_str)
-                    candidate_move = chess.Move.from_uci(move_uci)
-                    if candidate_move in self.board.legal_moves:
-                        move = candidate_move
-                except (ValueError, IndexError, TypeError):
-                    pass
+                move_uci = current_player.get_move(board_fen, player_color_str)
+                move = parse_and_validate_move(self.board, move_uci)
                 
                 if move is None:
                     move_number = self.board.ply() // 2 + 1
                     opponent_name = self.player_black.name if current_player == self.player_white else self.player_white.name
-                    self._log_illegal_move(current_player.name, opponent_name, board_fen, move_uci, move_number)
+                    log_illegal_move(self.illegal_move_log_file, current_player.name, opponent_name, board_fen, move_uci, move_number)
                     print("AI returned invalid/illegal move. Making a random legal move instead.")
                     move = random.choice(list(self.board.legal_moves))
             
@@ -140,7 +108,4 @@ class Match:
         self.result = self.board.result()
         print(f"Game over. Result: {self.result}")
         user_pgn_filename = self.pgn_filename.replace(".pgn", "_with_user.pgn")
-        os.makedirs(os.path.dirname(user_pgn_filename), exist_ok=True)
-        # Save to a different file to not overwrite test_play results
-        with open(user_pgn_filename, "w") as pgn_file:
-            print(self.game, file=pgn_file, end="\n\n")
+        save_pgn(user_pgn_filename, self.game)
