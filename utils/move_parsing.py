@@ -1,4 +1,5 @@
 import chess
+from utils.logging import log_illegal_move
 
 MAX_ASSISTED_ATTEMPTS = 10
 MAX_LEGAL_MOVES_IN_PROMPT = 30
@@ -18,7 +19,7 @@ def parse_and_validate_move(board, move_uci):
         return None
     return None
 
-def get_move_with_recovery(board, player, player_color):
+def get_move_with_recovery(board, player, player_color, log_file=None, opponent_name=None):
     """
     Gets a legal move from an LLM player using a 2-phase approach.
     Phase 1: Free attempt without hints.
@@ -33,6 +34,10 @@ def get_move_with_recovery(board, player, player_color):
 
     if move:
         return move
+    else:
+        if log_file and opponent_name:
+            move_number = board.ply() // 2 + 1
+            log_illegal_move(log_file, player.name, opponent_name, board_fen, move_uci, move_number)
 
     # Phase 2: Assisted attempt
     legal_moves = list(board.legal_moves)
@@ -56,6 +61,10 @@ def get_move_with_recovery(board, player, player_color):
 
         if move and move.uci() in legal_moves_uci:
             return move
+        else:
+            if log_file and opponent_name:
+                move_number = board.ply() // 2 + 1
+                log_illegal_move(log_file, player.name, opponent_name, board.fen(), move_uci, move_number)
 
     # If all attempts fail, raise an error
     raise RuntimeError(f"{player.name} failed to produce a legal move after {MAX_ASSISTED_ATTEMPTS} assisted attempts.")
