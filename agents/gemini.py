@@ -23,13 +23,13 @@ class GeminiAgent:
 
             if use_tools:
                 # For now, since tools are complex, just use text
-                model = genai.GenerativeModel("gemini-2.5-flash")
+                model = genai.GenerativeModel("gemma-3-27b-it")
                 resp = model.generate_content(prompt)
                 move = resp.text.strip()
                 print(f"{player_name} raw response: {move}")
                 return move
             else:
-                model = genai.GenerativeModel("gemini-2.5-flash")
+                model = genai.GenerativeModel("gemma-3-27b-it")
                 resp = model.generate_content(prompt)
                 move = resp.text.strip()
                 print(f"{player_name} raw response: {move}")

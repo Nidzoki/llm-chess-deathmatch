@@ -1,4 +1,5 @@
 import chess
+import random
 from utils.logging import log_illegal_move
 
 MAX_ASSISTED_ATTEMPTS = 10
@@ -30,6 +31,8 @@ def get_move_with_recovery(board, player, player_color, log_file=None, opponent_
     # Phase 1: Free attempt
     board_fen = board.fen()
     move_uci = player.get_move(board_fen, player_color, player_name=player.name)
+    if move_uci and move_uci.startswith("ERROR"):
+        raise RuntimeError(f"{player.name} encountered an error: {move_uci}")
     move = parse_and_validate_move(board, move_uci)
 
     if move:
@@ -57,6 +60,8 @@ def get_move_with_recovery(board, player, player_color, log_file=None, opponent_
             "Do not provide any other text, only the move in UCI format."
         )
         move_uci = player.get_move(board.fen(), player_color, forced_prompt=prompt, player_name=player.name)
+        if move_uci and move_uci.startswith("ERROR"):
+            raise RuntimeError(f"{player.name} encountered an error during assisted attempt: {move_uci}")
         move = parse_and_validate_move(board, move_uci)
 
         if move and move.uci() in legal_moves_uci:
@@ -66,5 +71,6 @@ def get_move_with_recovery(board, player, player_color, log_file=None, opponent_
                 move_number = board.ply() // 2 + 1
                 log_illegal_move(log_file, player.name, opponent_name, board.fen(), move_uci, move_number)
 
-    # If all attempts fail, raise an error
-    raise RuntimeError(f"{player.name} failed to produce a legal move after {MAX_ASSISTED_ATTEMPTS} assisted attempts.")
+    # If all attempts fail, return a random legal move
+    print(f"{player.name} failed to produce a legal move after {MAX_ASSISTED_ATTEMPTS} assisted attempts. Making a random move.")
+    return random.choice(list(board.legal_moves))
