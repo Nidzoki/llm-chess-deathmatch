@@ -43,9 +43,9 @@
             "id": 4,
             "white": "cohere",
             "black": "gemini",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/cohere_vs_gemini_20260128213149.pgn"
         },
         {
             "id": 5,
