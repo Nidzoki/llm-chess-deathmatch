@@ -1,3 +1,4 @@
+from time import time
 import chess
 import random
 from utils.logging import log_illegal_move
@@ -59,6 +60,7 @@ def get_move_with_recovery(board, player, player_color, log_file=None, opponent_
             f"The previous move was illegal. Choose exactly one move from this list: {legal_moves_str}. "
             "Do not provide any other text, only the move in UCI format."
         )
+        time.sleep(12)  # Brief pause to avoid rate limiting
         move_uci = player.get_move(board.fen(), player_color, forced_prompt=prompt, player_name=player.name)
         if move_uci and move_uci.startswith("ERROR"):
             raise RuntimeError(f"{player.name} encountered an error during assisted attempt: {move_uci}")
