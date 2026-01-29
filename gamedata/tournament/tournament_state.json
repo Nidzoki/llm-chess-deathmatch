@@ -123,137 +123,137 @@
             "id": 14,
             "white": "reka",
             "black": "groq",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/reka_vs_groq_20260129025747.pgn"
         },
         {
             "id": 15,
             "white": "reka",
             "black": "youchat",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "0-1",
+            "pgn_filename": "gamedata/pgns/reka_vs_youchat_20260129034950.pgn"
         },
         {
             "id": 16,
             "white": "youchat",
             "black": "gemini",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "1-0",
+            "pgn_filename": "gamedata/pgns/youchat_vs_gemini_20260129041139.pgn"
         },
         {
             "id": 17,
             "white": "youchat",
             "black": "cohere",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/youchat_vs_cohere_20260129042804.pgn"
         },
         {
             "id": 18,
             "white": "youchat",
             "black": "groq",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/youchat_vs_groq_20260129045005.pgn"
         },
         {
             "id": 19,
             "white": "youchat",
             "black": "reka",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/youchat_vs_reka_20260129050510.pgn"
         },
         {
             "id": 20,
             "white": "gemini",
             "black": "cohere",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/gemini_vs_cohere_20260129053029.pgn"
         },
         {
             "id": 21,
             "white": "gemini",
             "black": "groq",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/gemini_vs_groq_20260129054339.pgn"
         },
         {
             "id": 22,
             "white": "gemini",
             "black": "reka",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/gemini_vs_reka_20260129062702.pgn"
         },
         {
             "id": 23,
             "white": "gemini",
             "black": "youchat",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/gemini_vs_youchat_20260129073731.pgn"
         },
         {
             "id": 24,
             "white": "cohere",
             "black": "gemini",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/cohere_vs_gemini_20260129082458.pgn"
         },
         {
             "id": 25,
             "white": "cohere",
             "black": "groq",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/cohere_vs_groq_20260129084246.pgn"
         },
         {
             "id": 26,
             "white": "cohere",
             "black": "reka",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/cohere_vs_reka_20260129090356.pgn"
         },
         {
             "id": 27,
             "white": "cohere",
             "black": "youchat",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "0-1",
+            "pgn_filename": "gamedata/pgns/cohere_vs_youchat_20260129091927.pgn"
         },
         {
             "id": 28,
             "white": "groq",
             "black": "gemini",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/groq_vs_gemini_20260129092932.pgn"
         },
         {
             "id": 29,
             "white": "groq",
             "black": "cohere",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/groq_vs_cohere_20260129093920.pgn"
         },
         {
             "id": 30,
             "white": "groq",
             "black": "reka",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/groq_vs_reka_20260129100437.pgn"
         },
         {
             "id": 31,
@@ -333,6 +333,6 @@
         "cohere": 0,
         "groq": 1,
         "reka": 0,
-        "youchat": 0
+        "youchat": 3
     }
 }
