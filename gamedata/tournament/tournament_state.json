@@ -51,49 +51,49 @@
             "id": 5,
             "white": "cohere",
             "black": "groq",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/cohere_vs_groq_20260128223303.pgn"
         },
         {
             "id": 6,
             "white": "cohere",
             "black": "reka",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/cohere_vs_reka_20260128230548.pgn"
         },
         {
             "id": 7,
             "white": "cohere",
             "black": "youchat",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/cohere_vs_youchat_20260128232326.pgn"
         },
         {
             "id": 8,
             "white": "groq",
             "black": "gemini",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/groq_vs_gemini_20260128234132.pgn"
         },
         {
             "id": 9,
             "white": "groq",
             "black": "cohere",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/groq_vs_cohere_20260129004745.pgn"
         },
         {
             "id": 10,
             "white": "groq",
             "black": "reka",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/groq_vs_reka_20260129010248.pgn"
         },
         {
             "id": 11,
