@@ -1,9 +1,9 @@
-from time import time
+import time
 import chess
 import random
 from utils.logging import log_illegal_move
 
-MAX_ASSISTED_ATTEMPTS = 10
+MAX_ASSISTED_ATTEMPTS = 3
 MAX_LEGAL_MOVES_IN_PROMPT = 30
 
 def parse_and_validate_move(board, move_uci):
