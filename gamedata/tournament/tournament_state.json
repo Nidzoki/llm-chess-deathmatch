@@ -99,25 +99,25 @@
             "id": 11,
             "white": "groq",
             "black": "youchat",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/groq_vs_youchat_20260129014357.pgn"
         },
         {
             "id": 12,
             "white": "reka",
             "black": "gemini",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/reka_vs_gemini_20260129020457.pgn"
         },
         {
             "id": 13,
             "white": "reka",
             "black": "cohere",
-            "played": false,
-            "result": null,
-            "pgn_filename": null
+            "played": true,
+            "result": "*",
+            "pgn_filename": "gamedata/pgns/reka_vs_cohere_20260129021624.pgn"
         },
         {
             "id": 14,
